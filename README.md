@@ -13,14 +13,16 @@ EventBridge Scheduler と Lambda 非同期ワーカー設計で通知処理を�
 
 ```mermaid
 flowchart LR
-  Discord["Discord: Slash / Button / Modal"] -->|Interactions| APIGW["API Gateway"]
+  Discord["Discord: Slash / Button / Modal"]
 
   subgraph AWS["AWS Serverless"]
+    APIGW["API Gateway"]
     Lambda["Lambda Handler + Worker"]
     DDB[(DynamoDB)]
     Scheduler["EventBridge Scheduler"]
   end
 
+  Discord -->|Interactions| APIGW
   APIGW --> Lambda
   Lambda --> DDB
   Lambda --> Scheduler
@@ -29,7 +31,6 @@ flowchart LR
   Lambda -->|Bot REST API| DiscordAPI["Discord REST API"]
   DiscordAPI --> Discord
 ```
-
 ---
 ## Features
 
