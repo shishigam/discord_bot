@@ -31,6 +31,14 @@ flowchart LR
   Lambda -->|Bot REST API| DiscordAPI["Discord REST API"]
   DiscordAPI --> Discord
 ```
+
+### 構成要素
+
+- Discord Interactions（Ed25519 署名検証）
+- API Gateway → Lambda（Lambda Proxy統合）
+- DynamoDB（Events / EventMembers / Notices / NoticeAcks）
+- EventBridge Scheduler（時刻駆動リマインド）
+
 ---
 ## Features
 
@@ -51,18 +59,6 @@ flowchart LR
 - 指定時刻通知 / 前日通知の両対応
 - EventBridge Scheduler → Lambda → Discord投稿
 - 手動操作不要の自動運用
-
----
-
-## Architecture
-- Discord Interactions（署名検証: Ed25519）
-- API Gateway → Lambda（Lambda Proxy）
-- DynamoDB
-  - Events / EventMembers / Notices / NoticeAcks
-- EventBridge Scheduler
-  - リマインド時刻に Lambda を invoke
-
-詳細は `docs/architecture.md` を参照。
 
 ---
 
@@ -104,3 +100,14 @@ flowchart LR
 - Discord Interactions の **3秒制限**に対応するため、重い処理は **非同期ワーカー（同一LambdaをEvent invoke）**で実行
 - DynamoDB put_item に `ConditionExpression` を使い、二重参加/二重Ackを防止
 - Scheduler は create / update を使い分け、リマインド時刻の再設定に対応
+
+---
+
+## Detailed Design
+
+より詳しい設計資料:
+
+- Architecture 詳細 → docs/architecture.md
+- DynamoDB 設計 → docs/dynamodb.md
+- 処理シーケンス → docs/sequence.md
+- セキュリティ設計 → docs/security.md
