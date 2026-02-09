@@ -1,5 +1,4 @@
 # Discord Event & Notice Bot (AWS Serverless)
-
 イベント参加者への開催前通知と連絡未確認者への自動リマインドを自動化するDiscordサーバレスBotです。
 EventBridge Scheduler と Lambda 非同期ワーカー設計で通知処理を実現しています。
 
