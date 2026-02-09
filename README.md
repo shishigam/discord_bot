@@ -9,6 +9,19 @@ EventBridge Scheduler と Lambda 非同期ワーカー設計で通知処理を�
 - 未確認者へリマインド（Scheduler → Lambda → Discord投稿）
 
 ---
+
+flowchart LR
+  Discord[Discord (Slash / Button / Modal)] -->|Interactions| APIGW[API Gateway]
+  APIGW --> Lambda[Lambda (Handler + Worker)]
+
+  Lambda --> DDB[(DynamoDB)]
+  Lambda --> Scheduler[EventBridge Scheduler]
+
+  Scheduler -->|invoke at(...)| Lambda
+  Lambda -->|Bot REST API| DiscordAPI[Discord REST API]
+  DiscordAPI --> Discord
+
+---
 ## Features
 
 ### Event
