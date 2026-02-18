@@ -14,7 +14,7 @@ sequenceDiagram
 
     User->>Discord: /event create
     Discord->>Lambda: Interaction request
-    Lambda->>Lambda: Signature verification
+    Lambda->>Lambda: Verify Ed25519 signature
 
     Lambda->>DynamoDB: Save event
     Lambda->>Scheduler: Register reminder (at 24h before)
