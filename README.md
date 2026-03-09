@@ -1,11 +1,3 @@
-## Key Features（主な特徴）
-
-- Discordのスラッシュコマンドによるイベント参加管理
-- 連絡事項の確認機能（確認者 / 未確認者の管理）
-- 未確認メンバーへの自動リマインド通知
-- AWSサーバレス構成（Lambda / API Gateway / DynamoDB / EventBridge Scheduler）
-- Discord Interaction の3秒制限を考慮した非同期処理設計
-
 ## 概要 (Overview)
 このBotは、Discordサーバーで行われるイベントの参加者管理や連絡事項の確認を、手動ではなく自動化できないかと考えて開発しました。
 イベント参加者の管理や連絡の未確認者へのリマインドをBotが行うことで、サーバー運営者の負担を減らし、参加者の連絡の見逃しを防ぐことを目的としています。
@@ -16,6 +8,13 @@ This bot was developed to automate event participation management and announceme
 In many communities, event participation and confirmation of announcements are managed manually.
 This project aims to reduce the workload of server administrators by allowing a bot to manage event participation and send reminders to users who have not confirmed announcements.
 
+## Key Features（主な特徴）
+
+- Discordのスラッシュコマンドによるイベント参加管理
+- 連絡事項の確認機能（確認者 / 未確認者の管理）
+- 未確認メンバーへの自動リマインド通知
+- AWSサーバレス構成（Lambda / API Gateway / DynamoDB / EventBridge Scheduler）
+- Discord Interaction の3秒制限を考慮した非同期処理設計
 
 ## Demo / 操作イメージ
 
