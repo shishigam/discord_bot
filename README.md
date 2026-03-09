@@ -7,6 +7,7 @@ EventBridge Scheduler と Lambda 非同期ワーカー設計で通知処理を�
 - 「連絡を作成」→ Modal で連絡投稿（確認ボタン付き）
 - 「連絡一覧」→ ephemeral で一覧表示（開く/close/非表示/再表示）
 - 未確認者へリマインド（Scheduler → Lambda → Discord投稿）
+https://github.com/user-attachments/assets/4475f7ca-ae22-4b00-a44a-de715b66facf
 
 ---
 ## Architecture
