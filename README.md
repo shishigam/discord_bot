@@ -1,13 +1,37 @@
+## 概要 (Overview)
+このBotは、Discordサーバーで行われるイベントの参加者管理や連絡事項の確認を、手動ではなく自動化できないかと考えて開発しました。
+イベント参加者の管理や連絡の未確認者へのリマインドをBotが行うことで、サーバー運営者の負担を減らし、参加者の連絡の見逃しを防ぐことを目的としています。
+
+## Overview
+This bot was developed to automate event participation management and announcement tracking in Discord servers.
+
+In many communities, event participation and confirmation of announcements are managed manually.
+This project aims to reduce the workload of server administrators by allowing a bot to manage event participation and send reminders to users who have not confirmed announcements.
+
 # Discord Event & Notice Bot (AWS Serverless)
 イベント参加者への開催前通知と連絡未確認者への自動リマインドを自動化するDiscordサーバレスBotです。
 EventBridge Scheduler と Lambda 非同期ワーカー設計で通知処理を実現しています。
 
 ## Demo / 操作イメージ
+
 - `/event create` でイベント募集を投稿（参加/取消/締切ボタン付き）
+
+連絡はイベントを作成したチャンネルと別のチャンネルに設定可能（例：連絡専用チャンネルに連絡だけ集約）
+
+![イベント作成](https://github.com/user-attachments/assets/6ce7afc4-bc2e-4c6a-a9c1-9f913abfe0b5)
+
 - 「連絡を作成」→ Modal で連絡投稿（確認ボタン付き）
+
+![連絡作成](https://github.com/user-attachments/assets/02fd26af-dba2-496b-ab4c-775a35d44d1d)
+
 - 「連絡一覧」→ ephemeral で一覧表示（開く/close/非表示/再表示）
+
+開くを押すと該当の連絡に飛ぶことができる。
+
+![連絡一覧](https://github.com/user-attachments/assets/c07db4c5-4367-49aa-8659-afb7ee5fda3b)
+
+
 - 未確認者へリマインド（Scheduler → Lambda → Discord投稿）
-https://github.com/user-attachments/assets/4475f7ca-ae22-4b00-a44a-de715b66facf
 
 ---
 ## Architecture
